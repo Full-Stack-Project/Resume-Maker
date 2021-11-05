@@ -1,12 +1,13 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import ResumeTemplatePage from "./ResumeTemplate.page";
 
 function App() {
   return (
-    <div className="font-extrabold text-5xl bg-black text-white">
-      This is Resume Maker Project
+    <div className="">
+      <ResumeTemplatePage />
     </div>
   );
 }
 
-export default App;
+export default React.memo(App);

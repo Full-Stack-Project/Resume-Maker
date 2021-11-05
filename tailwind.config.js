@@ -1,11 +1,15 @@
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "hero-image": "url('/src/Images/glaIMG.jpg')",
+      },
+    },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};
