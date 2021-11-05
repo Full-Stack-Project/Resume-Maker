@@ -1,11 +1,20 @@
 import React from 'react';
+import { Route, BrowserRouter, Routes} from 'react-router-dom';
 import './App.css';
+import AuthPage from './pages/Auth/Auth.page';
 
 function App() {
   return (
-    <div className="font-extrabold text-5xl bg-black text-white">
-      This is Resume Maker Project
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login">
+          <AuthPage></AuthPage>
+        </Route>
+        <Route path="/signup">
+          <AuthPage></AuthPage>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
