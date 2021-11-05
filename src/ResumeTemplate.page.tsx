@@ -1,5 +1,8 @@
-import { Formik } from "formik";
+import { Formik, FormikProps, FormikValues } from "formik";
 import React from "react";
+import Education from "./Education.component";
+import Info from "./Info.component";
+import Internship from "./Internship.component";
 
 const ResumeTemplate: React.FC = () => {
   const initialValues = {
@@ -10,13 +13,15 @@ const ResumeTemplate: React.FC = () => {
     mob_number: "+91 9999999999",
     education_current: "Bachelor of Arts in English, GLA University, Mathura",
     education_current_completion: "May 2019",
-    education_highschool: "May 2016",
+    education_highschool: "High School, RPS School, Agra",
     education_highschool_completion: "May 2014",
-    internship_location: "Times of India, Agra",
-    internship_position: "Reader/Associate Editor",
+    education_intermediate: "Intermediate, RPS School, Agra",
+    education_intermediate_completion: "May 2016",
+    internship_location: "Location",
+    internship_duration: "From - Till date",
+    internship_position: "Position During Internsip",
     internship_points: {
-      0: "Review poetry submissions online with a team of 7 readers and recommend the highest quality creative works to be published in TOI.",
-      1: "Foster collaboration with other managing editors on magazine's theme, mission, and design using Adobe InDesign and Microsoft Publisher to review monthly.",
+      0: "What things you have learned? Brief.",
     },
     project_title: "Resume Maker",
     project_link: "https://abcdasdfsadf.xyz",
@@ -36,6 +41,7 @@ const ResumeTemplate: React.FC = () => {
     declaration:
       "I hereby declare that all the above mentioned information is true and correct to the best of my knowledge.",
   };
+
   return (
     <div className="bg-hero-image min-h-screen inline-block bg-fixed w-screen bg-no-repeat bg-center bg-cover">
       <div className="bg-white bg-opacity-95 mx-16 mt-5"></div>
@@ -43,8 +49,20 @@ const ResumeTemplate: React.FC = () => {
         initialValues={initialValues}
         onSubmit={() => console.log("submitted")}
       >
-        {({ values, handleChange, handleSubmit }) => (
-          <form onSubmit={handleSubmit}></form>
+        {(formikProps: FormikProps<FormikValues>) => (
+          <div className="bg-white py-3 mx-16 px-14">
+            <form onSubmit={formikProps.handleSubmit}>
+              <div>
+                <Info formikProps={formikProps} />
+              </div>
+              <div>
+                <Education formikProps={formikProps} />
+              </div>
+              <div>
+                <Internship formikProps={formikProps} />
+              </div>
+            </form>
+          </div>
         )}
       </Formik>
     </div>
