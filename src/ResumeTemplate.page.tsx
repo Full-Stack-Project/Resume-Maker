@@ -1,8 +1,12 @@
 import { Formik, FormikProps, FormikValues } from "formik";
 import React from "react";
+import Declaration from "./Declaration.component";
 import Education from "./Education.component";
+import ExtraActivities from "./ExtraActivities.component";
 import Info from "./Info.component";
 import Internship from "./Internship.component";
+import Project from "./Project.component";
+import Skill from "./Skill.component";
 
 const ResumeTemplate: React.FC = () => {
   const initialValues = {
@@ -25,6 +29,7 @@ const ResumeTemplate: React.FC = () => {
     },
     project_title: "Resume Maker",
     project_link: "https://abcdasdfsadf.xyz",
+    project_duration: "From - Till date",
     project_about: {
       0: "Implemented and evaluated schedules, programs and job positions for over 150 campers and 15 counselors.",
       1: "Planned and devised lessons and activities for 30 teenagers that enforced responsibility and dependability.",
@@ -37,6 +42,7 @@ const ResumeTemplate: React.FC = () => {
     },
     extra_activities_about: {
       0: "Coordinated SRIJAN (Cultural Fest, GLA)",
+      1: "Participated in MAITREE (Sports Fest, GLA)",
     },
     declaration:
       "I hereby declare that all the above mentioned information is true and correct to the best of my knowledge.",
@@ -60,6 +66,18 @@ const ResumeTemplate: React.FC = () => {
               </div>
               <div>
                 <Internship formikProps={formikProps} />
+              </div>
+              <div>
+                <Project formikProps={formikProps} />
+              </div>
+              <div>
+                <Skill formikProps={formikProps} />
+              </div>
+              <div>
+                <ExtraActivities formikProps={formikProps} />
+              </div>
+              <div>
+                <Declaration formikProps={formikProps} />
               </div>
             </form>
           </div>
