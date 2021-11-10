@@ -9,6 +9,7 @@ import Project from "./Project.component";
 import Skill from "./Skill.component";
 import { HiOutlineDownload } from "react-icons/all";
 import ReactToPdf from "react-to-pdf";
+import Images from "./Images";
 
 const ResumeTemplate: React.FC = () => {
   const componentRef = useRef(null);
@@ -57,9 +58,15 @@ const ResumeTemplate: React.FC = () => {
           {(formikProps: FormikProps<FormikValues>) => (
             <div className="bg-white py-3 mx-16 px-14">
               <form ref={componentRef} onSubmit={formikProps.handleSubmit}>
-                <div>
-                  <Info formikProps={formikProps} />
+                <div className="relative pt-5">
+                  <div>
+                    <Info formikProps={formikProps} />
+                  </div>
+                  <div className="absolute right-0 top-0">
+                    <Images />
+                  </div>
                 </div>
+
                 <div>
                   <Education formikProps={formikProps} />
                 </div>

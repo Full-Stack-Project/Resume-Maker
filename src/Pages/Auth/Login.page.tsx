@@ -7,6 +7,7 @@ import InputField from "../../components/InputField";
 import Icon from "../../components/Icons";
 import Button from "../../components/Button";
 import FormSwitch from "../../components/FormSwitch";
+import { Link } from "react-router-dom";
 
 interface Props {}
 
@@ -47,12 +48,14 @@ const Login: FC<Props> = (props) => {
           </h5>
         </div>
         <div>
-          <button
-            type="button"
-            className={`rounded-4px px-6 py-2 text-xl border-2 w-full border-primary-medium hover:bg-primary-medium text-primary-medium hover:text-white hover:shadow-primary`}
-          >
-            Login As Guest
-          </button>
+          <Link to="/edit-resume">
+            <button
+              type="button"
+              className={`rounded-4px px-6 py-2 text-xl border-2 w-full border-primary-medium hover:bg-primary-medium text-primary-medium hover:text-white hover:shadow-primary`}
+            >
+              Login As Guest
+            </button>
+          </Link>
         </div>
         <form onSubmit={handleSubmit} className="space-y-6" method="POST">
           <div className="space-y-12">
