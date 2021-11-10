@@ -31,26 +31,22 @@ const ResumeTemplate: React.FC = () => {
     project_link: "https://abcdasdfsadf.xyz",
     project_duration: "From - Till date",
     project_about: {
-      0: "Implemented and evaluated schedules, programs and job positions for over 150 campers and 15 counselors.",
-      1: "Planned and devised lessons and activities for 30 teenagers that enforced responsibility and dependability.",
-      2: "Coordinated end-of-summer awards ceremony for over 100 teenagers and parents.",
+      0: "What things you have learned? Brief.",
     },
     skill_title: "Technical",
     skill_about: {
-      0: "Presented to 100+ conference participants about the findings of a research study on folklore trends in the Southeast.",
-      1: "Conducted 3 breakout sessions with conference participants to answer questions and provide feedback about the study.",
+      0: "What things you have learned? Brief.",
     },
     extra_activities_about: {
-      0: "Coordinated SRIJAN (Cultural Fest, GLA)",
-      1: "Participated in MAITREE (Sports Fest, GLA)",
+      0: "What things you have learned? Brief.",
     },
     declaration:
       "I hereby declare that all the above mentioned information is true and correct to the best of my knowledge.",
   };
 
   return (
-    <div className="bg-hero-image min-h-screen inline-block bg-fixed w-screen bg-no-repeat bg-center bg-cover">
-      <div className="bg-white bg-opacity-95 mx-16 mt-5"></div>
+    <div className="bg-hero-image min-h-screen inline-block bg-fixed min-w-full bg-no-repeat bg-center bg-cover">
+      <div className="bg-white bg-opacity-95 mt-5"></div>
       <Formik
         initialValues={initialValues}
         onSubmit={() => console.log("submitted")}

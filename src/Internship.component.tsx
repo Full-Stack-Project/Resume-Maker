@@ -7,33 +7,40 @@ interface Props {
 }
 
 const Internship: React.FC<Props> = ({ formikProps }) => {
-  const [pointsCounter, setPointsCounter] = useState(1);
-  const [internshipCounter, setInternshipCounter] = useState(1);
+  const [internshipPointsArray, setInternshipPointsArray] = useState<number[]>([
+    1,
+  ]);
   return (
     <div className="mt-9">
       <h3 className="uppercase flex text-primary font-bold">
         <span className="my-auto mr-2">
           <FaPlusSquare
             className="text-primary cursor-pointer"
-            onClick={() => setInternshipCounter(internshipCounter + 1)}
+            onClick={() => setInternshipPointsArray((prev) => prev.concat(1))}
+          />
+        </span>
+        <span className="my-auto mr-2">
+          <FaMinusSquare
+            className="text-primary cursor-pointer"
+            onClick={() =>
+              setInternshipPointsArray((prev) => {
+                const arr = [...prev];
+                arr.pop();
+                return arr;
+              })
+            }
           />
         </span>
         Internship experience
       </h3>
       <hr className="w-full border border-primary" />
 
-      {Array(internshipCounter)
+      {Array(internshipPointsArray.length)
         .fill(1)
-        .map((item1) => (
+        .map((item1, index1) => (
           <div className="pt-8 text-sm">
             <div className="flex justify-between">
               <div className="flex">
-                <span className="my-auto mr-2">
-                  <FaMinusSquare
-                    className="text-primary cursor-pointer"
-                    onClick={() => setInternshipCounter(internshipCounter - 1)}
-                  />
-                </span>
                 <div contentEditable="true" className="font-bold outline-none">
                   {formikProps.values.internship_location}
                 </div>
@@ -46,16 +53,37 @@ const Internship: React.FC<Props> = ({ formikProps }) => {
               contentEditable="true"
               className="mr-16 flex italic outline-none"
             >
-              <span className="my-auto mr-2">
+              <span className="my-auto">
                 <FaPlusSquare
                   className="text-primary cursor-pointer"
-                  onClick={() => setPointsCounter(pointsCounter + 1)}
+                  onClick={() =>
+                    setInternshipPointsArray((prev) => {
+                      let arr = [...prev];
+                      arr[index1]++;
+                      return arr;
+                    })
+                  }
+                />
+              </span>
+              <span className="my-0.5 mx-1">
+                <FaMinusSquare
+                  className="text-primary cursor-pointer"
+                  onClick={() =>
+                    setInternshipPointsArray((prev) => {
+                      if (prev[index1] > 0) {
+                        let arr = [...prev];
+                        arr[index1]--;
+                        return arr;
+                      }
+                      return prev;
+                    })
+                  }
                 />
               </span>
               <span>{formikProps.values.internship_position}</span>
             </div>
             <div className="pt-2" key={item1}>
-              {Array(pointsCounter)
+              {Array(internshipPointsArray[index1])
                 .fill(1)
                 .map((item) => (
                   <div className="flex">
@@ -68,12 +96,6 @@ const Internship: React.FC<Props> = ({ formikProps }) => {
                       >
                         {formikProps.values.internship_points[0]}
                       </div>
-                      <span className="my-0.5 ml-2">
-                        <FaMinusSquare
-                          className="text-primary cursor-pointer"
-                          onClick={() => setPointsCounter(pointsCounter - 1)}
-                        />
-                      </span>
                     </div>
                   </div>
                 ))}
