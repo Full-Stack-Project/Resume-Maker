@@ -1,11 +1,22 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import LoginPage from "./Pages/Auth/Login.page";
+import SignUpPage from "./Pages/Auth/SignUp.page";
 
 function App() {
   return (
-    <div className="font-extrabold text-5xl bg-black text-white">
-      This is Resume Maker Project
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/login">
+          <LoginPage />
+        </Route>
+        <Route exact path="/signup">
+          <SignUpPage />
+        </Route>
+        {/* <Route path="/"><></Route> */}
+      </Switch>
+    </Router>
   );
 }
 

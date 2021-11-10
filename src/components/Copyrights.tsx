@@ -1,14 +1,20 @@
-import { FC, memo } from 'react';
-import LinkTo from '../components/LinkTo';
+import { FC, memo } from "react";
+import LinkTo from "../components/LinkTo";
 
 interface Props {
-    className?: string
+  className?: string;
 }
 
 const Copyrights: FC<Props> = ({ className }) => {
-    return (
-        <p className={`${className}`}>&copy; 2020 All Rights Reserved. <LinkTo to="/">CODEBITS</LinkTo> is a product of Designreset. <LinkTo to="/cookiePreferences">Cookie Preferences</LinkTo>, <LinkTo to="/privacy">Privacy</LinkTo>, and <LinkTo to="/terms">Terms</LinkTo>.</p>
-    );
+  return (
+    <p className={`${className}`}>
+      &copy; 2021 All Rights Reserved. <LinkTo to="/">GLA Resume Maker</LinkTo>{" "}
+      is a FrontEnd Project.{" "}
+      <LinkTo to="/cookiePreferences">Cookie Preferences</LinkTo>,{" "}
+      <LinkTo to="/privacy">Privacy</LinkTo>, and{" "}
+      <LinkTo to="/terms">Terms</LinkTo>.
+    </p>
+  );
 };
 
 Copyrights.defaultProps = {};
