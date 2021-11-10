@@ -6,34 +6,41 @@ interface Props {
   formikProps: FormikProps<FormikValues>;
 }
 
-const Project: React.FC<Props> = ({ formikProps }) => {
-  const [pointsCounter, setPointsCounter] = useState(3);
-  const [projectCounter, setProjectCounter] = useState(1);
+const Internship: React.FC<Props> = ({ formikProps }) => {
+  const [internshipPointsArray, setInternshipPointsArray] = useState<number[]>([
+    1,
+  ]);
   return (
     <div className="mt-9">
       <h3 className="uppercase flex text-primary font-bold">
         <span className="my-auto mr-2">
           <FaPlusSquare
             className="text-primary cursor-pointer"
-            onClick={() => setProjectCounter(projectCounter + 1)}
+            onClick={() => setInternshipPointsArray((prev) => prev.concat(1))}
+          />
+        </span>
+        <span className="my-auto mr-2">
+          <FaMinusSquare
+            className="text-primary cursor-pointer"
+            onClick={() =>
+              setInternshipPointsArray((prev) => {
+                const arr = [...prev];
+                arr.pop();
+                return arr;
+              })
+            }
           />
         </span>
         Projects
       </h3>
       <hr className="w-full border border-primary" />
 
-      {Array(projectCounter)
+      {Array(internshipPointsArray.length)
         .fill(1)
-        .map((item1) => (
+        .map((item1, index1) => (
           <div className="pt-8 text-sm">
             <div className="flex justify-between">
               <div className="flex">
-                <span className="my-auto mr-2">
-                  <FaMinusSquare
-                    className="text-primary cursor-pointer"
-                    onClick={() => setProjectCounter(projectCounter - 1)}
-                  />
-                </span>
                 <div contentEditable="true" className="font-bold outline-none">
                   {formikProps.values.project_title}
                 </div>
@@ -46,18 +53,41 @@ const Project: React.FC<Props> = ({ formikProps }) => {
               contentEditable="true"
               className="mr-16 flex italic outline-none"
             >
-              <span className="my-auto mr-2">
+              <span className="my-auto">
                 <FaPlusSquare
                   className="text-primary cursor-pointer"
-                  onClick={() => setPointsCounter(pointsCounter + 1)}
+                  onClick={() =>
+                    setInternshipPointsArray((prev) => {
+                      let arr = [...prev];
+                      arr[index1]++;
+                      return arr;
+                    })
+                  }
                 />
               </span>
-              <span>{formikProps.values.project_link}</span>
+              <span className="my-auto mx-1">
+                <FaMinusSquare
+                  className="text-primary cursor-pointer"
+                  onClick={() =>
+                    setInternshipPointsArray((prev) => {
+                      if (prev[index1] > 0) {
+                        let arr = [...prev];
+                        arr[index1]--;
+                        return arr;
+                      }
+                      return prev;
+                    })
+                  }
+                />
+              </span>
+              <a href={formikProps.values.project_link}>
+                {formikProps.values.project_link}
+              </a>
             </div>
             <div className="pt-2" key={item1}>
-              {Array(pointsCounter)
+              {Array(internshipPointsArray[index1])
                 .fill(1)
-                .map((item, index) => (
+                .map((item) => (
                   <div className="flex">
                     <span className="mr-4 ml-8">●</span>
                     <div className="flex">
@@ -66,14 +96,8 @@ const Project: React.FC<Props> = ({ formikProps }) => {
                         key={item}
                         className="outline-none"
                       >
-                        {formikProps.values.project_about[index]}
+                        {formikProps.values.project_about[0]}
                       </div>
-                      <span className="my-0.5 ml-2">
-                        <FaMinusSquare
-                          className="text-primary cursor-pointer"
-                          onClick={() => setPointsCounter(pointsCounter - 1)}
-                        />
-                      </span>
                     </div>
                   </div>
                 ))}
@@ -84,4 +108,4 @@ const Project: React.FC<Props> = ({ formikProps }) => {
   );
 };
 
-export default React.memo(Project);
+export default React.memo(Internship);

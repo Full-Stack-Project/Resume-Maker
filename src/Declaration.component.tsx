@@ -8,12 +8,9 @@ interface Props {
 const Declaration: React.FC<Props> = ({ formikProps }) => {
   return (
     <div className="mt-9">
-      <h3 className="uppercase flex text-primary font-bold">
-        Declaration
-      </h3>
+      <h3 className="uppercase flex text-primary font-bold">Declaration</h3>
       <hr className="w-full border border-primary" />
-
-      {formikProps.values.declaration}
+      <h2 className="text-sm pt-8">{formikProps.values.declaration}</h2>
     </div>
   );
 };

@@ -6,30 +6,43 @@ interface Props {
   formikProps: FormikProps<FormikValues>;
 }
 
-const ExtraActivities: React.FC<Props> = ({ formikProps }) => {
-  const [pointsCounter, setPointsCounter] = useState(2);
+const Internship: React.FC<Props> = ({ formikProps }) => {
+  const [internshipPointsArray, setInternshipPointsArray] = useState<number[]>([
+    1,
+  ]);
   return (
     <div className="mt-9">
       <h3 className="uppercase flex text-primary font-bold">
+        <span className="my-auto mr-2">
+          <FaPlusSquare
+            className="text-primary cursor-pointer"
+            onClick={() => setInternshipPointsArray((prev) => prev.concat(1))}
+          />
+        </span>
+        <span className="my-auto mr-2">
+          <FaMinusSquare
+            className="text-primary cursor-pointer"
+            onClick={() =>
+              setInternshipPointsArray((prev) => {
+                const arr = [...prev];
+                arr.pop();
+                return arr;
+              })
+            }
+          />
+        </span>
         EXTRA/CO-CURRICULAR ACTIVITIES
       </h3>
       <hr className="w-full border border-primary" />
-          <div className="pt-8 text-sm">
-            <div
-              contentEditable="true"
-              className="mr-16 flex italic outline-none"
-            >
-              <span className="my-auto mr-2">
-                <FaPlusSquare
-                  className="text-primary cursor-pointer"
-                  onClick={() => setPointsCounter(pointsCounter + 1)}
-                />
-              </span>
-            </div>
-            <div className="pt-2">
-              {Array(pointsCounter)
+
+      <div className="pt-8">
+        {Array(internshipPointsArray.length)
+          .fill(1)
+          .map((item1, index1) => (
+            <div className="text-sm pt-0.5" key={item1}>
+              {Array(internshipPointsArray[index1])
                 .fill(1)
-                .map((item, index) => (
+                .map((item) => (
                   <div className="flex">
                     <span className="mr-4 ml-8">●</span>
                     <div className="flex">
@@ -38,21 +51,16 @@ const ExtraActivities: React.FC<Props> = ({ formikProps }) => {
                         key={item}
                         className="outline-none"
                       >
-                        {formikProps.values.extra_activities_about[index]}
+                        {formikProps.values.project_about[0]}
                       </div>
-                      <span className="my-0.5 ml-2">
-                        <FaMinusSquare
-                          className="text-primary cursor-pointer"
-                          onClick={() => setPointsCounter(pointsCounter - 1)}
-                        />
-                      </span>
                     </div>
                   </div>
                 ))}
             </div>
-          </div>
+          ))}
+      </div>
     </div>
   );
 };
 
-export default React.memo(ExtraActivities);
+export default React.memo(Internship);
