@@ -10,7 +10,7 @@ const Info: React.FC<Props> = ({ formikProps }) => {
     <div>
       <div className="text-center -space-y-1">
         <InputBox
-          className="outline-none text-primary font-bold text-2xl uppercase"
+          className="outline-none text-primary-one font-bold text-2xl uppercase"
           name="name"
           onChange={formikProps.handleChange}
           value={formikProps.values.name}
@@ -32,7 +32,7 @@ const Info: React.FC<Props> = ({ formikProps }) => {
         </div>
         <div>
           <InputBox
-            className="text-xs font-medium underline text-secondary lowercase"
+            className="text-xs font-medium underline text-secondary-one lowercase"
             name="email"
             onChange={formikProps.handleChange}
             value={formikProps.values.email}

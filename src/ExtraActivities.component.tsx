@@ -12,16 +12,16 @@ const Internship: React.FC<Props> = ({ formikProps }) => {
   ]);
   return (
     <div className="mt-9">
-      <h3 className="uppercase flex text-primary font-bold">
+      <h3 className="uppercase flex text-primary-one font-bold">
         <span className="my-auto mr-2">
           <FaPlusSquare
-            className="text-primary cursor-pointer"
+            className="text-primary-one cursor-pointer"
             onClick={() => setInternshipPointsArray((prev) => prev.concat(1))}
           />
         </span>
         <span className="my-auto mr-2">
           <FaMinusSquare
-            className="text-primary cursor-pointer"
+            className="text-primary-one cursor-pointer"
             onClick={() =>
               setInternshipPointsArray((prev) => {
                 const arr = [...prev];
@@ -33,7 +33,7 @@ const Internship: React.FC<Props> = ({ formikProps }) => {
         </span>
         EXTRA/CO-CURRICULAR ACTIVITIES
       </h3>
-      <hr className="w-full border border-primary" />
+      <hr className="w-full border border-primary-one" />
 
       <div className="pt-8">
         {Array(internshipPointsArray.length)

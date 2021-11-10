@@ -9,8 +9,8 @@ interface Props {
 const Education: React.FC<Props> = ({ formikProps }) => {
   return (
     <div className="mt-7">
-      <h3 className="uppercase text-primary font-bold">Education</h3>
-      <hr className="w-full border border-primary" />
+      <h3 className="uppercase text-primary-one font-bold">Education</h3>
+      <hr className="w-full border border-primary-one" />
       <div className="pt-8 space-y-2">
         <div className="flex text-sm justify-between">
           <InputBox
