@@ -1,5 +1,5 @@
 import { Formik, FormikProps, FormikValues } from "formik";
-import React, { useRef } from "react";
+import React from "react";
 import Declaration from "./Declaration.component";
 import Education from "./Education.component";
 import ExtraActivities from "./ExtraActivities.component";
@@ -7,11 +7,9 @@ import Info from "./Info.component";
 import Internship from "./Internship.component";
 import Project from "./Project.component";
 import Skill from "./Skill.component";
-import { HiOutlineDownload } from "react-icons/all";
-import ReactToPdf from "react-to-pdf";
+import Images from "./Images";
 
 const ResumeTemplate: React.FC = () => {
-  const componentRef = useRef(null);
   const initialValues = {
     name: "Vikas Sharma",
     city: "Lajpat Nagar",
@@ -30,77 +28,69 @@ const ResumeTemplate: React.FC = () => {
     internship_points: {
       0: "What things you have learned? Brief.",
     },
-    project_title: "Project Name",
+    project_title: "Resume Maker",
     project_link: "https://abcdasdfsadf.xyz",
     project_duration: "From - Till date",
     project_about: {
-      0: "Tech Stack used. Brief.",
+      0: "Implemented and evaluated schedules, programs and job positions for over 150 campers and 15 counselors.",
+      1: "Planned and devised lessons and activities for 30 teenagers that enforced responsibility and dependability.",
+      2: "Coordinated end-of-summer awards ceremony for over 100 teenagers and parents.",
     },
     skill_title: "Technical",
     skill_about: {
-      0: "What skills do you have? Brief.",
+      0: "Presented to 100+ conference participants about the findings of a research study on folklore trends in the Southeast.",
+      1: "Conducted 3 breakout sessions with conference participants to answer questions and provide feedback about the study.",
     },
     extra_activities_about: {
-      0: "What things you have learned? Brief.",
+      0: "Coordinated SRIJAN (Cultural Fest, GLA)",
+      1: "Participated in MAITREE (Sports Fest, GLA)",
     },
     declaration:
       "I hereby declare that all the above mentioned information is true and correct to the best of my knowledge.",
   };
 
   return (
-    <div className="bg-hero-image min-h-screen inline-block bg-fixed min-w-full bg-no-repeat bg-center bg-cover">
-      <div className="bg-white bg-opacity-95 mx-16 my-5">
-        <Formik
-          initialValues={initialValues}
-          onSubmit={() => console.log("submitted")}
-        >
-          {(formikProps: FormikProps<FormikValues>) => (
-            <div className="bg-white py-3 mx-16 px-14">
-              <form ref={componentRef} onSubmit={formikProps.handleSubmit}>
-                <div>
-                  <Info formikProps={formikProps} />
-                </div>
-                <div>
-                  <Education formikProps={formikProps} />
-                </div>
-                <div>
-                  <Internship formikProps={formikProps} />
-                </div>
-                <div>
-                  <Project formikProps={formikProps} />
-                </div>
-                <div>
-                  <Skill formikProps={formikProps} />
-                </div>
-                <div>
-                  <ExtraActivities formikProps={formikProps} />
-                </div>
-                <div>
-                  <Declaration formikProps={formikProps} />
-                </div>
-              </form>
-            </div>
-          )}
-        </Formik>
-      </div>
-
-      <ReactToPdf
-        scale={0.75}
-        x={5}
-        y={5}
-        targetRef={componentRef}
-        filename="resume.pdf"
+    <div className="bg-hero-image min-h-screen inline-block bg-fixed w-screen bg-no-repeat bg-center bg-cover">
+      <div className="bg-white bg-opacity-95 mx-16 mt-5"></div>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={() => console.log("submitted")}
       >
-        {({ toPdf }: any) => (
-          <button
-            type="button"
-            onClick={toPdf}
-            className="bg-white hover:bg-blue-200 rounded-full border-2 border-primary p-2 fixed bottom-4 right-4"
-          >
-            <HiOutlineDownload className="h-10 w-10 text-primary" />
-          </button>
+        {(formikProps: FormikProps<FormikValues>) => (
+          <div className="bg-white py-3 mx-16 px-14">
+            <form onSubmit={formikProps.handleSubmit}>
+
+              <div className="relative pt-5">
+                <div>
+                  <Info formikProps={formikProps}/>
+                </div>
+                <div className="absolute right-0 top-0">
+                  <Images />
+                </div>
+              </div>
+
+              <div>
+                <Education formikProps={formikProps} />
+              </div>
+              <div>
+                <Internship formikProps={formikProps} />
+              </div>
+              <div>
+                <Project formikProps={formikProps} />
+              </div>
+              <div>
+                <Skill formikProps={formikProps} />
+              </div>
+              <div>
+                <ExtraActivities formikProps={formikProps} />
+              </div>
+              <div>
+                <Declaration formikProps={formikProps} />
+              </div>
+            </form>
+          </div>
         )}
-      </ReactToPdf>
+      </Formik>
     </div>
   );
 };

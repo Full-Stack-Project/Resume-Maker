@@ -8,7 +8,7 @@ interface Props {
 
 const Education: React.FC<Props> = ({ formikProps }) => {
   return (
-    <div className="mt-7">
+    <div className="mt-10">
       <h3 className="uppercase text-primary font-bold">Education</h3>
       <hr className="w-full border border-primary" />
       <div className="pt-8 space-y-2">
